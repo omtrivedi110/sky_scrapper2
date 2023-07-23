@@ -3,6 +3,7 @@ import 'package:sky_scrapper2/controller/helpers/apihelper.dart';
 
 class ApiController extends ChangeNotifier {
   Map? data;
+  String place = "Surat";
 
   ApiController() {
     storeData();

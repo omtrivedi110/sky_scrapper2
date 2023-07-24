@@ -31,9 +31,25 @@ class HomePage extends StatelessWidget {
                         const SizedBox(
                           height: 40,
                         ),
-                        const Text(
-                          "Weather Information",
-                          style: TextStyle(fontSize: 26),
+                        Row(
+                          children: [
+                            const Spacer(),
+                            const Text(
+                              "Weather Information",
+                              style: TextStyle(fontSize: 26),
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {
+                                pro.bookmark();
+                              },
+                              icon: Icon(
+                                pro.save
+                                    ? Icons.bookmark
+                                    : (Icons.bookmark_add_outlined),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           height: 40,
@@ -103,11 +119,11 @@ class HomePage extends StatelessWidget {
                           children: [
                             const Text(
                               "Weather nature :-  ",
-                              style: TextStyle(fontSize: 27),
+                              style: TextStyle(fontSize: 25),
                             ),
                             Text(
                               "${pro.data!['weather'][0]['description']} ",
-                              style: const TextStyle(fontSize: 27),
+                              style: const TextStyle(fontSize: 25),
                             ),
                           ],
                         ),

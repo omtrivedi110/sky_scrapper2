@@ -38,6 +38,7 @@ dependencies:
   provider:
   http:
   shared_preferences:
+  connectivity_plus:
 
 dev_dependencies:
   flutter_test:

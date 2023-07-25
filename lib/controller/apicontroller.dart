@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sky_scrapper2/controller/helpers/apihelper.dart';
+import 'package:sky_scrapper2/modals/apimodals.dart';
 
 class ApiController extends ChangeNotifier {
   Map? data;
@@ -16,10 +17,18 @@ class ApiController extends ChangeNotifier {
     storeData();
   }
 
+  List get getlists {
+    return preferences!.getStringList(listkey) ?? [];
+  }
+
   bookmark() {
-    List? val = preferences!.getStringList(place);
-    if (val != null) {
+    List? val = preferences!.getStringList(listkey);
+    if (val == null) {
       bookmarklist.add(place);
+      preferences!.setStringList(listkey, bookmarklist);
+    } else if (!val.contains(place)) {
+      val.add(place);
+      bookmarklist = List.from(val);
       preferences!.setStringList(listkey, bookmarklist);
     }
     save = !save;
